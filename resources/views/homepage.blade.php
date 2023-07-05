@@ -40,6 +40,9 @@
        </div>
     </div>
 
+
+    <div class="section categories produit">
+
         <div class=cards>
             <div style="background: white; margin: 20px;  padding: 30px; display: flex; justify-content : space-evenly; ">
 
