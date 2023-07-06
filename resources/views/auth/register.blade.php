@@ -77,6 +77,13 @@
             <x-input-error :messages="$errors->get('department')" class="mt-2" />
         </div>
 
+        <!-- Pays -->
+        <div>
+            <x-input-label for="country" :value="__('Pays')" />
+            <x-text-input id="country" class="block mt-1 w-full" type="text" name="country" :value="old('country')" required autofocus autocomplete="country" />
+            <x-input-error :messages="$errors->get('country')" class="mt-2" />
+        </div>
+
         <!-- Tel fixe -->
         <div>
             <x-input-label for="phone1" :value="__('Téléphone fixe (facultatif)')" />
