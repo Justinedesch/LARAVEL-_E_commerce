@@ -1,6 +1,6 @@
 @extends('template')
 @section('titre')
-    Homepage
+    Accueil
 @endsection
 
 

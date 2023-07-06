@@ -27,7 +27,7 @@ class User extends Authenticatable
         'town' => 'required',
         'department' => 'required',
         'country' => 'required',
-        'phone1' => 'required',
+        'phone1',
         'phone2' => 'required',
         'roles' => 'required'
     ];

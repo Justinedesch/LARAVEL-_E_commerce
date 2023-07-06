@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CatalogueController;
@@ -31,15 +32,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-
 require __DIR__.'/auth.php';
 
-
 Route::get('/product/{id}', [ProductController::class, 'productdetail']);
-
 Route::get('/catalogue', [CatalogueController::class, 'catalogue']);
-
 Route::get('/panier',[CartController::class,"index"]);
-
 Route::get('/contact',[ContactController::class,"index"]);
+
+
+Route::get('/test',[TestController::class,"getAllUsers"]);
+Route::get('/test1/{id}',[TestController::class,"getUserInfo"]);
