@@ -1,0 +1,43 @@
+
+.detail{
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.rounded-lg {
+    max-width:300rem;
+    padding-top : 5rem;
+    background-color: blanchedalmond;
+
+    
+}
+
+.p-5{
+
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    
+      
+}
+
+.add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15px;
+    
+
+}
+
+.ol{
+    display: flex;
+    justify-content: center;
+}
+
+.continue{
+    display: flex;
+    justify-content: flex-end;
+    padding-top:15px;
+}
