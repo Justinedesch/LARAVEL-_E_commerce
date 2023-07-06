@@ -3,17 +3,17 @@
     Homepage
 @endsection
 
+
+
 @section('content')
 
-    <div class="section presentation">
-
-        <div type="box-sizing: border-box;width: calc (100% - 40px); max-width: 1000px ;margin-left: auto;margin-right: auto;"</div>
+    <div class="section_presentation">
 
 
 
     <div class=presentation>
 
-        <div style="background: white; margin: 20px;  padding: 30px; display: flex; justify-content : space-evenly; ">
+        <div style="  background: white; margin: 40px;  padding: 200px; display: flex; justify-content : space-evenly">
             <div role="status" class="space-y-8 animate-pulse md:space-y-0 md:space-x-8 md:flex md:items-center">
                 <div class="flex items-center justify-center w-full h-48 bg-gray-300 rounded sm:w-96 dark:bg-gray-700">
                     <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true"

@@ -37,6 +37,7 @@
         body {
             margin: 0;
             line-height: inherit
+
         }
 
         hr {
@@ -791,6 +792,8 @@
 
 <main>
     @yield('content')
+
+
 
     <div
         class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 selection:bg-red-500 selection:text-white">
