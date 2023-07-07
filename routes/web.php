@@ -36,10 +36,12 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-Route::get('/product/{id}', [ProductController::class, 'productdetail']);
+Route::get('/product/{id}', [ProductController::class, 'getProduit']);
 
-Route::get('/catalogue', [CatalogueController::class, 'catalogue']);
+//Route::get('/catalogue', [CatalogueController::class, 'catalogue']);
 
 Route::get('/panier',[CartController::class,"index"]);
 
 Route::get('/contact',[ContactController::class,"index"]);
+
+Route::get('/catalogue1', [CatalogueController::class,"getall"]);
