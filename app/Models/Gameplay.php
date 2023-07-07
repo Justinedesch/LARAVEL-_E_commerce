@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Categories extends Model
+class Gameplay extends Model
 {
     use HasFactory;
 
@@ -16,16 +16,12 @@ class Categories extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name' => 'required',
         'image' => 'required',
-        'alt' => 'required',
-        'description' => 'required',
-        'link' => 'required'
+        'alt' => 'required'
     ];
 
-    public function products(): HasMany
+    public function product(): BelongsTo
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
-
 }

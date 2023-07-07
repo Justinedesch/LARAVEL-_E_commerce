@@ -18,5 +18,14 @@
         </a>
         <br>
     @endforeach
+
+    <br>
+    <br>
+    <br>
+
+    @foreach($cats as $cat)
+        {{ $cat->name }} <br>
+        <img src="{{ asset( $cat->image ) }}" alt="{{ $cat->alt }}">
+    @endforeach
 @endsection
 

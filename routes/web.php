@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
@@ -18,9 +19,7 @@ use App\Http\Controllers\CatalogueController;
 |
 */
 
-Route::get('/', function () {
-    return view('homepage');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -34,10 +33,14 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/product/{id}', [ProductController::class, 'productdetail']);
-Route::get('/catalogue', [CatalogueController::class, 'catalogue']);
-Route::get('/panier',[CartController::class,"index"]);
 Route::get('/contact',[ContactController::class,"index"]);
+Route::get('/panier',[CartController::class,"index"]);
+
+Route::get('/catalogue', [CatalogueController::class, 'catalogue']);
+Route::get('/catalogue/{nameCat}', [ProductController::class, 'productOfCat']);
+
+
+Route::get('/product/{id}', [ProductController::class, 'productdetail']);
 
 
 Route::get('/test',[TestController::class,"getAllUsers"]);
