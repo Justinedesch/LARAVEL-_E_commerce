@@ -5,20 +5,22 @@ Product
 
 @section('content')
 <div class = detail>
+
             <div class=" max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
                     <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
 
-                        <img class="rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/content-gallery-3.png" alt="image description">
+                        <img class="rounded-lg" src="{{ $product->image}}" alt="image description">
 
                     </figure>
 
                         <div class="p-5">
-                            <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Product name</h3>
-                            <span class="text-5xl font-extrabold tracking-tight">49<span class="text-3xl font-semibold">€</span></span>
+                           
+                            <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $product->name}}</h3>
+                            <span class="text-5xl font-extrabold tracking-tight">{{ $product->price}}<span class="text-3xl font-semibold">€</span></span>
                         </div>
                     <div class="add"><a href="{{url("/panier")}}" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Add to cart</a></div>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $product->description}}</p>
 
                     <h2 class="title mb-2 text-lg font-semibold text-gray-900 dark:text-white">Product detail:</h2>
                       <div class="ol">
