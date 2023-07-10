@@ -34,14 +34,11 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/contact',[ContactController::class,"index"]);
-Route::get('/panier',[CartController::class,"index"]);
 
 Route::get('/catalogue', [CatalogueController::class, 'catalogue']);
 Route::get('/catalogue/{nameCat}', [ProductController::class, 'productOfCat']);
-
-
-Route::get('/product/{id}', [ProductController::class, 'productdetail']);
-
+Route::get('/product/{nameProduct}', [ProductController::class, 'productdetail']);
+Route::get('/panier',[CartController::class,"index"]);
 
 Route::get('/test',[TestController::class,"getAllUsers"]);
 Route::get('/test1/{id}',[TestController::class,"getUserInfo"]);
