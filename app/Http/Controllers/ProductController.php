@@ -25,7 +25,7 @@ class ProductController extends Controller
     {
         $productId = $request->route('id');
         $product = $this->productRepository->getProductById($productId);
-        if (empty($product)) { return  redirect('/'); }
+        if (empty($product)) { return  redirect(route('accueil.index')); }
 
         $gameplaysOfProduct = $this->productRepository->getGameplaysByProduct($productId);
 

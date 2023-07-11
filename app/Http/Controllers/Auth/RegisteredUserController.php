@@ -30,7 +30,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-
         $request->validate([
             'gender' => ['bail', 'required','in:Mme,Mlle,M', 'not_in:0'],
             'lastname' => ['bail', 'required', 'string', 'max:255'],
@@ -44,7 +43,7 @@ class RegisteredUserController extends Controller
             'phone1' => ['required_if:bail,string,regex:/^([0-9\s\-\+\(\)]*)$/,max:14'],
             'phone2' => ['bail', 'required', 'regex:/^([0-9\s\-\+\(\)]*)$/','string', 'min:10', 'max:14'],
         ]);
-
+//        dd($request->all());
         $user = User::create([
             'gender' => $request->gender,
             'lastname' => $request->lastname,
@@ -58,9 +57,10 @@ class RegisteredUserController extends Controller
             'phone1' => !empty($request->phone1) ? $request->phone1 : null,
             'phone2' => $request->phone2,
             'roles' => 'ROLE_USER',
-            'created_at' => new \DateTime('now', new \DateTimeZone('Europe/Paris')),
-            'updated_at' => new \DateTime('now', new \DateTimeZone('Europe/Paris')),
+//            'created_at' => new \DateTime('now', new \DateTimeZone('Europe/Paris')),
+//            'updated_at' => new \DateTime('now', new \DateTimeZone('Europe/Paris')),
         ]);
+        dd($user);
 
         event(new Registered($user));
 
