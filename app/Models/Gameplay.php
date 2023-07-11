@@ -17,7 +17,8 @@ class Gameplay extends Model
      */
     protected $fillable = [
         'image' => 'required',
-        'alt' => 'required'
+        'alt' => 'required',
+        'product_id'
     ];
 
     public function product(): BelongsTo

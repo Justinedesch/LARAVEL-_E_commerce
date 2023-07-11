@@ -5,13 +5,11 @@
 
 @section('content')
 
-
-   @if(!empty($cats))
-       @include('components._home._caroussel_cat')
-   @else
-       PAS DE CATEGORIE CONDITION
-   @endif
-
+    @if(!empty($cats))
+        @include('includes._home._caroussel_cat')
+    @else
+        PAS DE CATEGORIE CONDITION
+    @endif
 
 @endsection
 

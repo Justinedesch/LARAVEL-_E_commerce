@@ -13,18 +13,18 @@
                             {{ $product->description }}
                         </p>
                         <div class="flex justify-between item-center">
-                            <a href="{{ url('/') }}">
+                            <a href="{{ route('accueil.index') }}">
                                 <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                                     <i class="fa-solid fa-arrow-left"></i> ACCUEIL
                                 </button>
                             </a>
-                            <a href="{{url('/catalogue')}}">
+                            <a href="{{ route('catalogue.index')}}">
                                 <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                                     <i class="fa-solid fa-book"></i> CATALOGUE
                                 </button>
                             </a>
                             @if($product->isAvailable == 1)
-                                <a href="{{url('/product/'.$product->name)}}">
+                                <a href="{{ route('product.show', [ 'id' => $product->id ]) }}">
                                     <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                                         <i class="fa-solid fa-arrow-right"></i> VOIR PRODUIT
                                     </button>

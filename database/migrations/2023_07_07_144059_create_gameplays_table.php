@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('image');
             $table->string('alt');
-            $table->foreignId('products_id');
+            $table->foreignId('product_id');
             $table->timestamps();
         });
     }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -19,7 +20,7 @@ use App\Http\Controllers\CatalogueController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('accueil.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -33,12 +34,12 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/contact',[ContactController::class,"index"]);
+Route::get('/contact',[ContactController::class,"index"])->name('contact.index');
 
-Route::get('/catalogue', [CatalogueController::class, 'catalogue']);
-Route::get('/catalogue/{nameCat}', [ProductController::class, 'productOfCat']);
-Route::get('/product/{nameProduct}', [ProductController::class, 'productdetail']);
-Route::get('/panier',[CartController::class,"index"]);
+Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue.index');
+Route::get('/category/{id}', [CategoryController::class, 'show'])->name('category.show');
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/panier',[CartController::class,"index"])->name('cart.index');
 
-Route::get('/test',[TestController::class,"getAllUsers"]);
-Route::get('/test1/{id}',[TestController::class,"getUserInfo"]);
+//Route::get('/test',[TestController::class,"getAllUsers"]);
+//Route::get('/test1/{id}',[TestController::class,"getUserInfo"]);

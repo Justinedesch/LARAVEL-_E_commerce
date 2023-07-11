@@ -22,21 +22,24 @@ class Product extends Model
         'description' => 'required',
         'price' => 'required',
         'isAvailable' => 'required',
-        'image' => 'required',
-        'alt' => 'required',
+        'image',
+        'alt',
         'weight' => 'required',
         'stock' => 'required',
-        'discount' => 'required',
-        'categories_id' => 'required'
+        'discount',
+        'category_id' => 'required',
+        'gameplays_id'
     ];
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function gameplays(): HasMany
     {
         return $this->hasMany(Gameplay::class);
     }
+
+
 }

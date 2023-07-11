@@ -1,10 +1,10 @@
 @extends('template')
 @section('titre')
-Catalogue
+    Catalogue
 @endsection
 
 @section('content')
-    @include('components._products._catalogue')
+    @include('includes._products._catalogue')
 @endsection
 
 

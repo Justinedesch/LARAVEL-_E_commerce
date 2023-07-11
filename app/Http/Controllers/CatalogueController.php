@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class CatalogueController extends Controller
 {
-    function catalogue(): View|Application|Factory
+    public function index(): View|Application|Factory
     {
         $products = Product::with('category')->get();
         return view('catalogue', [ 'products' => $products ]);

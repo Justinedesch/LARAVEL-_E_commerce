@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-    @include('components._products._productsByCat')
+    @include('includes._products._productsByCat')
 @endsection

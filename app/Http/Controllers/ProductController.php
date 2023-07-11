@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
+use App\Interfaces\ProductRepositoryInterface;
+use App\Models\Category;
 use App\Models\Gameplay;
 use App\Models\Product;
 use Illuminate\Contracts\View\Factory;
@@ -14,30 +15,20 @@ use Illuminate\Routing\Redirector;
 
 class ProductController extends Controller
 {
+    private ProductRepositoryInterface $productRepository;
 
-    public function productdetail (string $nameProduct): View|Application|Factory|Redirector|RedirectResponse
+    public function __construct(ProductRepositoryInterface $productRepository)
     {
-        $product = Product::where('name', $nameProduct)->first();
-
-        if (!empty($product))
-        {
-            $imgsGp = Gameplay::with('product')->where('products_id', $product->id)->get();
-            return view('productdetail', [ 'product' => $product, 'imgsGp' => $imgsGp] );
-        } else {
-            return redirect('/');
-        }
-      }
-
-    public function productOfCat(string $cat): Application|View|Factory|Redirector|RedirectResponse
+        $this->productRepository = $productRepository;
+    }
+    public function show(Request $request): View|Application|Factory|Redirector|RedirectResponse
     {
-        $category = Categories::where('name', $cat)->first();
+        $productId = $request->route('id');
+        $product = $this->productRepository->getProductById($productId);
+        if (empty($product)) { return  redirect('/'); }
 
-        if (!empty($category))
-        {
-            $products = Product::with('category')->where('categories_id',$category->id)->get();
-            return view('products_by_cat', [ 'products' => $products, 'cat' => $category ]);
-        } else {
-            return redirect('/');
-        }
+        $gameplaysOfProduct = $this->productRepository->getGameplaysByProduct($productId);
+
+        return view('productdetail', ['product' => $product, 'gameplays' => $gameplaysOfProduct ]);
     }
 }

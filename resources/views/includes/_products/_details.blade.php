@@ -12,22 +12,22 @@
                         {{ $product->description }}
                     </p>
                     <div class="flex flex-col justify-between item-center">
-                        @foreach($imgsGp as $img)
-                            <img src="{{ $img->image }}" alt="{{ $img->alt }}" class="rounded-xl m-2">
+                        @foreach($gameplays as $gameplay)
+                            <img src="{{ $gameplay->image }}" alt="{{ $gameplay->alt }}" class="rounded-xl m-2">
                         @endforeach
                     </div>
                     <div class="flex justify-between item-center">
-                        <a href="{{ url('/') }}">
+                        <a href="{{ route('accueil.index') }}">
                             <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                                 <i class="fa-solid fa-arrow-left"></i> ACCUEIL
                             </button>
                         </a>
-                        <a href="{{url('/catalogue')}}">
+                        <a href="{{ route('catalogue.index')}}">
                             <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                                 <i class="fa-solid fa-book"></i> CATALOGUE
                             </button>
                         </a>
-                        <a href="{{url('/panier')}}">
+                        <a href="{{ route('cart.index')}}">
                             <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                                 <i class="fa-solid fa-arrow-right"></i> CART
                             </button>
