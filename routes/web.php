@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BackofficeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
@@ -21,9 +22,11 @@ Route::get('/', function () {
     return view('homepage');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//});
+//
+//})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -32,8 +35,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
-
-require __DIR__.'/auth.php';
+//
+//require __DIR__.'/auth.php';
 
 
 Route::get('/product/{id}', [ProductController::class, 'getProduit']);
@@ -44,4 +47,6 @@ Route::get('/panier',[CartController::class,"index"]);
 
 Route::get('/contact',[ContactController::class,"index"]);
 
-Route::get('/catalogue1', [CatalogueController::class,"getall"]);
+Route::get('/catalogue', [CatalogueController::class,"getall"]);
+
+Route::get('/backoffice',[BackofficeController::class,"getProductForm"]);

@@ -11,6 +11,8 @@
 
         @foreach ($products as $product)
 
+
+
             <div>
 
                 <h3 class=" text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $product->name}}</h3>
@@ -26,7 +28,9 @@
 
     </div>
     <div class="button-ca justify-center">
+        @if ($product->available == false) Out of stock @endif
         <a href= "/product/{{$product->id}}"
+
            class=" focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Shop</a>
     </div>
     </div>
