@@ -38,6 +38,7 @@ require __DIR__.'/auth.php';
 
 
 Route::get('/product/{id}', [ProductController::class, 'productdetail',]);
+//Route::get('/product/{id}', 'ProductController@show')->name('productdetail');
 
 Route::get('/catalogue', [CatalogueController::class, 'catalogue',]);
 
