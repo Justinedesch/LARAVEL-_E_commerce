@@ -39,14 +39,30 @@ Route::middleware('auth')->group(function () {
 //require __DIR__.'/auth.php';
 
 
-Route::get('/product/{id}', [ProductController::class, 'getProduit']);
+Route::get('/product/{id}', [ProductController::class, 'getProduit'])->name('product.show');
 
 //Route::get('/catalogue', [CatalogueController::class, 'catalogue']);
 
-Route::get('/panier',[CartController::class,"index"]);
+Route::get('/panier',[CartController::class,"index"])->name('cart.index');
 
-Route::get('/contact',[ContactController::class,"index"]);
+Route::get('/contact',[ContactController::class,"index"])->name('contact.index');
 
-Route::get('/catalogue', [CatalogueController::class,"getall"]);
+Route::get('/catalogue', [CatalogueController::class,"getall"])->name('catalogue.index');
 
-Route::get('/backoffice',[BackofficeController::class,"getProductForm"]);
+Route::get('/index',[ProductController::class,'index'])->name('product.index');
+
+
+Route::get('/create', [ProductController::class, 'create'])->name('product.create');
+Route::post('/create', [ProductController::class, 'store'])->name('product.store');
+
+
+Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+Route::post('/edit/{id}', [ProductController::class, 'update'])->name('product.update');
+
+
+Route::delete('/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
+
+
+
+
+
