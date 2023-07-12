@@ -16,9 +16,14 @@ class Product extends Model
 
     ];
 
-    public function categoriesRelation()
+    public function category()
     {
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo(Category::class);
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
     }
 
 }

@@ -5,13 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Orders extends Model
+class Client extends Model
 {
     use HasFactory;
 
-    public function productrelation()
+    protected $fillable = [
+
+    ];
+
+    public function orders()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Order::class);
     }
 
 }

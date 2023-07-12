@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BackofficeController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +19,7 @@ use App\Http\Controllers\CatalogueController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('homepage');
 });
 
@@ -50,6 +51,10 @@ Route::get('/contact',[ContactController::class,"index"])->name('contact.index')
 Route::get('/catalogue', [CatalogueController::class,"getall"])->name('catalogue.index');
 
 Route::get('/index',[ProductController::class,'index'])->name('product.index');
+
+Route::get('/categorie/{category_id}',[CategoryController::class,"getcategory"])->name('category');
+
+
 
 
 Route::get('/create', [ProductController::class, 'create'])->name('product.create');

@@ -9,6 +9,22 @@
 @section('content')
     <div class=" flex justify-center gap-20 m-40">
 
+        <div>
+          <h1>Categories</h1>
+
+            <li>
+                <a href="/categorie/1" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 md:dark:hover:bg-transparent">Categorie1</a>
+            <li>
+                <a href="/categorie/2" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 md:dark:hover:bg-transparent">Categorie2</a>
+            </li>
+            <li>
+                <a href=/categorie/3" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 md:dark:hover:bg-transparent">Categorie3</a>
+            </li>
+            </li>
+
+
+        </div>
+
         @foreach ($products as $product)
 
 
