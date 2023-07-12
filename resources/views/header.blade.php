@@ -1,6 +1,8 @@
+
+
 <nav class="bg-white border-gray-200">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="#" class="flex items-center">
+        <a href="" class="flex items-center">
             <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
             <span class="self-center text-2xl font-semibold whitespace-nowrap">Flowbite</span>
         </a>
@@ -27,8 +29,16 @@
                 </li>
                 <li>
                     <a href="/index" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 md:dark:hover:bg-transparent">Index</a>
+
                 </li>
-                @if (Route::has('login'))
+
+                <li>
+                    <a href="/dashboard" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 md:dark:hover:bg-transparent">Connexion</a>
+
+                </li>
+
+
+            @if (Route::has('login'))
                         @auth
                             <li>
                                 <a href="{{ url('/dashboard') }}"

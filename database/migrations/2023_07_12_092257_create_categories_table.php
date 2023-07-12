@@ -8,24 +8,24 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('image');
-            $table->string('alt');
-            $table->text('description');
-            $table->string('link');
-            $table->timestamps();
+            $table->integer('id', true);
+            $table->string('name', 45);
+            $table->longText('description');
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('categories');
     }

@@ -15,6 +15,7 @@
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",
         "fakerphp/faker": "^1.9.1",
+        "kitloong/laravel-migrations-generator": "^6.10",
         "laravel-lang/attributes": "^2.3",
         "laravel-lang/lang": "^12.23",
         "laravel-lang/publisher": "^14.6",

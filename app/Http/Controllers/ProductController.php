@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Error;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -33,7 +32,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
-        return view('index', compact('products'));
+        return view('product.index', compact('products'));
 
     }
 
@@ -51,11 +50,10 @@ class ProductController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $product = new Product();
-        $product->name = $request->name;
-        $product->description = $request->detail;
-
-        $product ->save;
-return redirect()->route('catalogue.index');
+        $product->name = $request->input('name');
+        $product->description = $request->input('detail');
+        $product ->save();
+return redirect()->route('product.index');
 
 //
 //        return redirect()->route('product.index')
@@ -73,31 +71,41 @@ return redirect()->route('catalogue.index');
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product): View
-    {
-        return view('product.edit', compact('products'));
+    public function edit($id): View
+      {
+          $product = Product::find($id);
+        return view('product.edit',  ['product' => $product]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product): RedirectResponse
+    public function update(Request $request, Product $product)
     {
-        $request->validate([
-            'name' => 'required',
-            'detail' => 'required',
-        ]);
 
-        $product->update($request->all());
+        $product->name = $request->name;
+        $product->description = $request->detail;
+
+//        $request->validate([
+//            'name' => 'required',
+//            'detail' => 'required',
+
+
+        $product->update();
+
 
         return redirect()->route('product.index')
             ->with('success', 'Product updated successfully');
     }
 
+
+
+
+
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product): RedirectResponse
+    public function delete(Product $product): RedirectResponse
     {
         $product->delete();
 

@@ -4,11 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use mysql_xdevapi\Table;
 
 class Product extends Model
 {
 
     use HasFactory;
 
+    protected $guarded = [
+
+
+    ];
+
+    public function categoriesRelation()
+    {
+        return $this->belongsTo(Categories::class);
+    }
 
 }
