@@ -11,7 +11,7 @@ class ProductRepository implements ProductRepositoryInterface
 
     public function getAllProducts(): Collection
     {
-        return Product::all();
+        return Product::orderBy('created_at', 'desc')->get();
     }
 
     public function getProductById($productId)

@@ -25,8 +25,10 @@
                 </button>
             </a>
 
+            @include('includes._backoffice._message_flash')
+
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                @include('includes._backoffice._table_products')
+                @include('includes._backoffice._products._table_products')
             </div>
         </div>
     </div>

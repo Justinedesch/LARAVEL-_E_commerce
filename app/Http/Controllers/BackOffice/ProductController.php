@@ -36,10 +36,26 @@ class ProductController extends Controller
     public function store(Request $request, ProductRepositoryInterface $productRepository): RedirectResponse
     {
         $request->validate([
-
+            'name' => ['bail', 'required', 'string', 'max:255'],
+            'description_title' => ['bail', 'required', 'string', 'max:255'],
+            'description' => ['bail', 'required', 'string', 'min:1'],
+            'price' => ['bail', 'required', 'integer','gte:0'],
+            'isAvailable' => ['bail', 'required','in:0,1'],
+            'weight' => ['bail', 'required', 'integer','gte:0'],
+            'stock' => ['bail', 'required', 'integer','gte:0'],
+            'discount' => ['bail', 'integer', 'nullable','gte:0']
         ]);
 
-        $productRepository->createProduct($request->all());
+        $productRepository->createProduct([
+            'name' => $request->name,
+            'description_title' => $request->description_title,
+            'description' => $request->description,
+            'price' => $request->price,
+            'isAvailable' => $request->isAvailable,
+            'weight' => $request->weight,
+            'stock' => $request->stock,
+            'discount' => !empty($request->discount) ? $request->discount : null
+        ]);
 
         return redirect()->route('products.index')->with('success', 'Produit ajouté avec succès.');
     }
@@ -47,30 +63,57 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product): View|Application|Factory
+    public function show(Request $request, ProductRepositoryInterface $productRepository): View|Application|Factory
     {
-        return view('backoffice/products/product_show', compact('product'));
+        $productId = $request->route('id');
+        $product = $productRepository->getProductById($productId);
+        $gameplaysOfProduct = $productRepository->getGameplaysByProduct($productId);
+        return view('backoffice/products/product_show', ['product' => $product, '_gameplays' => $gameplaysOfProduct]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product, ProductRepositoryInterface $productRepository): View|Application|Factory
+    public function edit(Request $request, ProductRepositoryInterface $productRepository): View|Application|Factory
     {
-        $product = $productRepository->getProductById($product);
+        $productId = $request->route('id');
+        $product = $productRepository->getProductById($productId);
         return view('backoffice/products/product_edit', compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product, ProductRepositoryInterface $productRepository): RedirectResponse
+    public function update(Request $request, ProductRepositoryInterface $productRepository): RedirectResponse
     {
         $request->validate([
-
+            'name' => ['bail', 'nullable', 'string', 'max:255'],
+            'description_title' => ['bail', 'nullable', 'string', 'max:255'],
+            'description' => ['bail', 'nullable', 'string', 'min:1'],
+            'price' => ['bail', 'nullable', 'integer','gte:0'],
+            'isAvailable' => ['bail', 'in:0,1'],
+            'image' => ['bail', 'nullable', 'string', 'max:255'],
+            'alt' => ['bail', 'nullable', 'string', 'max:255'],
+            'weight' => ['bail', 'nullable', 'integer','gte:0'],
+            'stock' => ['bail', 'nullable', 'integer','gte:0'],
+            'discount' => ['bail', 'integer', 'nullable','gte:0']
         ]);
 
-        $productRepository->updateProduct($product, $request->all());
+        $productId = $request->route('id');
+        $product = $productRepository->getProductById($productId);
+
+        $productRepository->updateProduct($product->id, [
+            'name' => !empty($request->name) ? $request->name : $product->name,
+            'description_title' => !empty($request->description_title) ? $request->description_title : $product->description_title,
+            'description' => !empty($request->description) ? $request->description : $product->description,
+            'price' => !empty($request->price) ? $request->price : $product->price,
+            'isAvailable' => (int)$request->isAvailable,
+            'image' => !empty($request->image) ? $request->image : $product->image,
+            'alt' => !empty($request->alt) ? $request->alt : $product->alt,
+            'weight' => !empty($request->weight) ? $request->weight : $product->weight,
+            'stock' => !empty($request->stock) ? $request->stock : $product->stock,
+            'discount' => !empty($request->discount) ? $request->discount : $product->discount
+        ]);
 
         return redirect()->route('products.index')->with('success', 'Produit modifié avec succés.');
     }
@@ -78,10 +121,11 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product, ProductRepositoryInterface $productRepository): RedirectResponse
+    public function destroy(Request $request, ProductRepositoryInterface $productRepository): RedirectResponse
     {
-        $productRepository->deleteProduct($product);
-
+        $productId = $request->route('id');
+        $product = $productRepository->getProductById($productId);
+        $productRepository->deleteProduct($product->id);
         return redirect()->route('products.index')->with('success', 'Produit supprimé avec succés.');
     }
 }

@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\ProductRepositoryInterface;
-use App\Models\Category;
-use App\Models\Gameplay;
-use App\Models\Product;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -29,6 +26,6 @@ class ProductController extends Controller
 
         $gameplaysOfProduct = $this->productRepository->getGameplaysByProduct($productId);
 
-        return view('productdetail', ['product' => $product, 'gameplays' => $gameplaysOfProduct ]);
+        return view('productdetail', ['product' => $product, '_gameplays' => $gameplaysOfProduct ]);
     }
 }

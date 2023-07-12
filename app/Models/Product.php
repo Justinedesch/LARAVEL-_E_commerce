@@ -17,17 +17,17 @@ class Product extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name' => 'required',
-        'description_title' => 'required',
-        'description' => 'required',
-        'price' => 'required',
-        'isAvailable' => 'required',
+        'name',
+        'description_title' ,
+        'description' ,
+        'price' ,
+        'isAvailable',
         'image',
         'alt',
-        'weight' => 'required',
-        'stock' => 'required',
+        'weight' ,
+        'stock' ,
         'discount',
-        'category_id' => 'required',
+        'category_id' ,
         'gameplays_id'
     ];
 

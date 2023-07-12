@@ -50,7 +50,7 @@
 {{--                                <p>Gestion des produits</p>--}}
 {{--                            </div>--}}
 {{--                            <div class="h-48 max-w-full rounded-lg bg-green-500 flex justify-center items-center">--}}
-{{--                                <p>Gestion des gameplays</p>--}}
+{{--                                <p>Gestion des _gameplays</p>--}}
                             </div>
                         </div>
                     </div>

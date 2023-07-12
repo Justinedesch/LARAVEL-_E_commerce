@@ -14,7 +14,7 @@ class TestController extends Controller
     public function getAllUsers(): View|Application|Factory
     {
         $users = DB::select('SELECT * FROM users');
-        $cats = DB::select('SELECT * FROM categories');
+        $cats = DB::select('SELECT * FROM _categories');
 
 //        dd($cats);
 

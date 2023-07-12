@@ -40,7 +40,7 @@ Route::middleware(AdminMiddleware::class)->group(function () {
         Route::get('/', [adminProduct::class, 'index'])->name('products.index');
         Route::get('/edit/{id}', [adminProduct::class, 'edit'])->name('products.edit');
         Route::post('/update/{id}', [adminProduct::class, 'update'])->name('products.update');
-        Route::post('/delete/{id}', [adminProduct::class, 'destroy'])->name('products.destroy');
+        Route::get('/delete/{id}', [adminProduct::class, 'destroy'])->name('products.destroy');
         Route::get('/create', [adminProduct::class, 'create'])->name('products.create');
         Route::post('/store', [adminProduct::class, 'store'])->name('products.store');
         Route::get('/show/{id}', [adminProduct::class, 'show'])->name('products.show');
