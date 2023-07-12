@@ -29,7 +29,7 @@
                                 <p>Gestion des catégories</p>
                             </div>
                             <div class="h-48 max-w-full rounded-lg bg-green-500 flex justify-center items-center">
-                                <p>Gestion des produits</p>
+                                <a href="{{ route('products.index') }}">Gestion des produits</a>
                             </div>
                             <div class="h-48 max-w-full rounded-lg bg-green-500 flex justify-center items-center">
                                 <p>Gestion des gameplays</p>

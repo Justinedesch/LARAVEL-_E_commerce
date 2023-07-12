@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 //use App\Http\Controllers\TestController;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BackOffice\ProductController as adminProduct;
@@ -34,8 +35,17 @@ Route::middleware('auth')->group(function () {
 
 });
 
-//Route::get('/products', [adminProduct::class, 'index'])->name('products.index');
-
+Route::middleware(AdminMiddleware::class)->group(function () {
+    Route::group(['prefix' => 'admin/products'], function(){
+        Route::get('/', [adminProduct::class, 'index'])->name('products.index');
+        Route::get('/edit/{id}', [adminProduct::class, 'edit'])->name('products.edit');
+        Route::post('/update/{id}', [adminProduct::class, 'update'])->name('products.update');
+        Route::post('/delete/{id}', [adminProduct::class, 'destroy'])->name('products.destroy');
+        Route::get('/create', [adminProduct::class, 'create'])->name('products.create');
+        Route::post('/store', [adminProduct::class, 'store'])->name('products.store');
+        Route::get('/show/{id}', [adminProduct::class, 'show'])->name('products.show');
+    });
+})->middleware(['AdminMiddleware', 'roles' => 'ROLE_ADMIN']);
 
 require __DIR__.'/auth.php';
 
