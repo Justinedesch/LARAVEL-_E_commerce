@@ -52,15 +52,19 @@
     </div>
 
 
-    <div class="button-ca justify-center">
+    <form action="{{ route('order.store') }}" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-primary">Commander</button>
+<input type="hidden" name='product_id' value = {{ $product->id}}>
+        <input type="hidden" name='number' value = 1>
+        <input type="hidden" name='customer_id' value = 1>
+        <input type="hidden" name='availability' value = {{ $product->available}}>
+        <input type="hidden" name='total' value = '5'>
+    </form>
 
-        <a href= "/order"
-
-           class=" focus:outline-none text-white bg-pink-300-400 hover:bg-pink-300-500 focus:ring-4 focus:ring-pink-300-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-pink-300-900">Commander</a>
-    </div>
 
     @endforeach
-    </div>
+
 
 
 

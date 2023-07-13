@@ -45,7 +45,7 @@ Route::get('/product/{id}', [ProductController::class, 'getProduit'])->name('pro
 
 //Route::get('/catalogue', [CatalogueController::class, 'catalogue']);
 
-Route::get('/panier',[CartController::class,"index"])->name('cart.index');
+
 
 Route::get('/contact',[ContactController::class,"index"])->name('contact.index');
 
@@ -71,6 +71,9 @@ Route::delete('/delete/{product}', [ProductController::class, 'delete'])->name('
 
 
 Route::get('/order', [OrderController::class, 'order'])->name('order');
+
+Route::get('/addtocart', [OrderController::class, 'create'])->name('order.create');
+Route::post('/addtocart', [OrderController::class, 'store'])->name('order.store');
 
 
 
