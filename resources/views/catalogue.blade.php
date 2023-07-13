@@ -52,6 +52,13 @@
     </div>
 
 
+    <div class="button-ca justify-center">
+
+        <a href= "/order"
+
+           class=" focus:outline-none text-white bg-pink-300-400 hover:bg-pink-300-500 focus:ring-4 focus:ring-pink-300-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-pink-300-900">Commander</a>
+    </div>
+
     @endforeach
     </div>
 

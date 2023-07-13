@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CatalogueController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,6 +67,12 @@ Route::put('/edit/{product}', [ProductController::class, 'update'])->name('produ
 
 
 Route::delete('/delete/{product}', [ProductController::class, 'delete'])->name('product.delete');
+
+
+
+Route::get('/order', [OrderController::class, 'order'])->name('order');
+
+
 
 
 

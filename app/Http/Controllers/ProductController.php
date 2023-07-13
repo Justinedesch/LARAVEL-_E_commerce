@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -49,16 +50,78 @@ class ProductController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'price' =>  'required|integer|min:0',
+
+        ]);
+
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+
+
+
+
         $product = new Product();
         $product->name = $request->input('name');
+
+//        @if ('name'==null);
+//
+//    @endif
+
         $product->description = $request->input('detail');
+        $product->price = $request->input('price');
         $product ->save();
 return redirect()->route('product.index');
+
 
 //
 //        return redirect()->route('product.index')
 //            ->with('success', 'Product created successfully.');
     }
+
+
+
+
+
+
+
+//    public function order()
+//    {
+//        return view('order');
+//    }
+
+
+//    public function addToCart($id)
+//    {
+//        $product = Product::findOrFail($id);
+//
+//        $order = session()->get('order', []);
+//
+//        if(isset($order[$id])) {
+//            $cart[$id]['quantity']++;
+//        } else {
+//            $order[$id] = [
+//                "name" => $product->name,
+//                "quantity" => 1,
+//                "price" => $product->price,
+//
+//            ];
+//        }
+//
+//        session()->put('order', $order);
+//        return view('order');
+//    }
+//
+
+
+
 
     /**
      * Display the specified resource.

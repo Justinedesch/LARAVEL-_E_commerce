@@ -4,13 +4,28 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Laravel 10 CRUD Example from scratch - ItSolutionStuff.com</h2>
+                <h2>Ajoutez, éditez ou supprimez un produit</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('product.create') }}"> Create New Product</a>
             </div>
         </div>
     </div>
+
+    @if(isset($errors) && $errors->any())
+
+        <div class="alert alert-danger">
+
+            @foreach($errors->all() as $error)
+
+                <p>{{ $error }}</p>
+
+            @endforeach
+
+        </div>
+
+    @endif
+
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -22,13 +37,17 @@
         <tr>
             <th>Name</th>
             <th>Details</th>
-            <th width="280px">Action</th>
+            <th width="280px">price</th>
+            <th width="280px">availability</th>
+            <th width="280px">action</th>
         </tr>
         @foreach ($products as $product)
             <tr>
 
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->detail }}</td>
+                <td>{{ $product->price }}</td>
+                <td>{{ $product->available }}</td>
 
                 <td>
 

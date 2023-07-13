@@ -11,14 +11,19 @@ class CategoryController
 
 
 
-    public function getcategory($category_id)
+    public function getcategory($categoryId)
     {
 
 
-        $category = Category::find(1);
+        $category = Category::find($categoryId);
+
+        if (!$category){
+            abort(404);
+//            dd('ereur');
+        }
+
+
         $products= $category->products;
-
-
 
         return view('category', ['products' => $products]);
     }
