@@ -14,6 +14,6 @@ class CatalogueController extends Controller
     public function index(): View|Application|Factory
     {
         $products = Product::with('category')->get();
-        return view('catalogue', [ '_products' => $products ]);
+        return view('catalogue', [ 'products' => $products ]);
     }
 }

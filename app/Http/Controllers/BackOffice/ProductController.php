@@ -68,7 +68,7 @@ class ProductController extends Controller
         $productId = $request->route('id');
         $product = $productRepository->getProductById($productId);
         $gameplaysOfProduct = $productRepository->getGameplaysByProduct($productId);
-        return view('backoffice/products/product_show', ['product' => $product, '_gameplays' => $gameplaysOfProduct]);
+        return view('backoffice/products/product_show', ['product' => $product, 'gameplays' => $gameplaysOfProduct]);
     }
 
     /**

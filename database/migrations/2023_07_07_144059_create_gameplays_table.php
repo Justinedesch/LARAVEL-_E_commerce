@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('gameplays', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
-            $table->string('alt');
-            $table->foreignId('product_id');
+            $table->string('name');
+            $table->string('image')->nullable();
+            $table->string('alt')->nullable();
+            $table->foreignId('product_id')->nullable();
             $table->timestamps();
         });
     }

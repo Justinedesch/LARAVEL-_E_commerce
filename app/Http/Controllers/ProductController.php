@@ -26,6 +26,6 @@ class ProductController extends Controller
 
         $gameplaysOfProduct = $this->productRepository->getGameplaysByProduct($productId);
 
-        return view('productdetail', ['product' => $product, '_gameplays' => $gameplaysOfProduct ]);
+        return view('productdetail', ['product' => $product, 'gameplays' => $gameplaysOfProduct ]);
     }
 }

@@ -28,7 +28,7 @@ class CategoryController extends Controller
         if (empty($cat)) { return redirect(route('accueil.index')); }
         $productsOfCat = $this->categoryRepository->getProductsByCategory($categoryId);
 
-        return view('products_by_cat', ['cat' => $cat, '_products' => $productsOfCat]);
+        return view('products_by_cat', ['cat' => $cat, 'products' => $productsOfCat]);
     }
 
 

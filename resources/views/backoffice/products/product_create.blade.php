@@ -18,6 +18,6 @@
     @include('includes._backoffice._display_errors_form')
 
     <div class="py-12">
-        @include('includes._backoffice._form_create_product')
+        @include('includes._backoffice._products._form_create_product')
     </div>
 </x-app-layout>

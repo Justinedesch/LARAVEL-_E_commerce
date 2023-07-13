@@ -23,16 +23,19 @@
                         <h2 class="text-xl font-semibold m-4"> Panel administrateur </h2>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                             <div class="h-48 max-w-full rounded-lg bg-green-500 flex justify-center items-center">
-                                <p>Gestion des utilisateurs</p>
+                                <a href="{{ route('users.index') }}">Gestion des utilisateurs</a>
                             </div>
                             <div class="h-48 max-w-full rounded-lg bg-green-500 flex justify-center items-center">
-                                <p>Gestion des catégories</p>
+                                <a href="{{ route('categories.index') }}">Gestion des catégories</a>
                             </div>
                             <div class="h-48 max-w-full rounded-lg bg-green-500 flex justify-center items-center">
                                 <a href="{{ route('products.index') }}">Gestion des produits</a>
                             </div>
                             <div class="h-48 max-w-full rounded-lg bg-green-500 flex justify-center items-center">
-                                <p>Gestion des gameplays</p>
+                                <a href="{{ route('gameplays.index') }}">Gestion des gameplays</a>
+                            </div>
+                            <div class="h-48 max-w-full rounded-lg bg-green-500 flex justify-center items-center">
+                                <a href="{{ route('addresses.index') }}">Gestion des adresses</a>
                             </div>
                         </div>
                     </div>

@@ -18,14 +18,13 @@ return new class extends Migration
             $table->text('description');
             $table->float('price');
             $table->boolean('isAvailable');
-            $table->string('image');
-            $table->string('alt');
+            $table->string('image')->nullable();
+            $table->string('alt')->nullable();
             $table->integer('weight');
             $table->integer('stock');
-            $table->integer('discount');
+            $table->integer('discount')->nullable();
             $table->timestamps();
-            $table->foreignId('categories_id');
-            $table->foreignId('gameplays_id');
+            $table->foreignId('categories_id')->nullable();
         });
     }
 

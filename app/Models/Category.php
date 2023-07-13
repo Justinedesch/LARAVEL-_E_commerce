@@ -16,12 +16,11 @@ class Category extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name' => 'required',
-        'image' => 'required',
-        'alt' => 'required',
-        'description' => 'required',
-        'link' => 'required',
-        'products_id',
+        'name',
+        'image',
+        'alt',
+        'description',
+        'link'
     ];
 
     public function products(): HasMany

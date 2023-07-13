@@ -10,6 +10,10 @@ use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BackOffice\ProductController as adminProduct;
+use App\Http\Controllers\BackOffice\GameplayController as adminGameplay;
+use App\Http\Controllers\BackOffice\CategoryController as adminCategory;
+use App\Http\Controllers\BackOffice\UserController as adminUser;
+use App\Http\Controllers\BackOffice\AddressController as adminAddress;
 use App\Http\Controllers\CatalogueController;
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +48,46 @@ Route::middleware(AdminMiddleware::class)->group(function () {
         Route::get('/create', [adminProduct::class, 'create'])->name('products.create');
         Route::post('/store', [adminProduct::class, 'store'])->name('products.store');
         Route::get('/show/{id}', [adminProduct::class, 'show'])->name('products.show');
+    });
+
+    Route::group(['prefix' => 'admin/gameplays'], function(){
+        Route::get('/', [adminGameplay::class, 'index'])->name('gameplays.index');
+        Route::get('/edit/{id}', [adminGameplay::class, 'edit'])->name('gameplays.edit');
+        Route::post('/update/{id}', [adminGameplay::class, 'update'])->name('gameplays.update');
+        Route::get('/delete/{id}', [adminGameplay::class, 'destroy'])->name('gameplays.destroy');
+        Route::get('/create', [adminGameplay::class, 'create'])->name('gameplays.create');
+        Route::post('/store', [adminGameplay::class, 'store'])->name('gameplays.store');
+        Route::get('/show/{id}', [adminGameplay::class, 'show'])->name('gameplays.show');
+    });
+
+    Route::group(['prefix' => 'admin/categories'], function(){
+        Route::get('/', [adminCategory::class, 'index'])->name('categories.index');
+        Route::get('/edit/{id}', [adminCategory::class, 'edit'])->name('categories.edit');
+        Route::post('/update/{id}', [adminCategory::class, 'update'])->name('categories.update');
+        Route::get('/delete/{id}', [adminCategory::class, 'destroy'])->name('categories.destroy');
+        Route::get('/create', [adminCategory::class, 'create'])->name('categories.create');
+        Route::post('/store', [adminCategory::class, 'store'])->name('categories.store');
+        Route::get('/show/{id}', [adminCategory::class, 'show'])->name('categories.show');
+    });
+
+    Route::group(['prefix' => 'admin/users'], function(){
+        Route::get('/', [adminUser::class, 'index'])->name('users.index');
+        Route::get('/edit/{id}', [adminUser::class, 'edit'])->name('users.edit');
+        Route::post('/update/{id}', [adminUser::class, 'update'])->name('users.update');
+        Route::get('/delete/{id}', [adminUser::class, 'destroy'])->name('users.destroy');
+        Route::get('/create', [adminUser::class, 'create'])->name('users.create');
+        Route::post('/store', [adminUser::class, 'store'])->name('users.store');
+        Route::get('/show/{id}', [adminUser::class, 'show'])->name('users.show');
+    });
+
+    Route::group(['prefix' => 'admin/addresses'], function(){
+        Route::get('/', [adminAddress::class, 'index'])->name('addresses.index');
+        Route::get('/edit/{id}', [adminAddress::class, 'edit'])->name('addresses.edit');
+        Route::post('/update/{id}', [adminAddress::class, 'update'])->name('addresses.update');
+        Route::get('/delete/{id}', [adminAddress::class, 'destroy'])->name('addresses.destroy');
+        Route::get('/create', [adminAddress::class, 'create'])->name('addresses.create');
+        Route::post('/store', [adminAddress::class, 'store'])->name('addresses.store');
+        Route::get('/show/{id}', [adminAddress::class, 'show'])->name('addresses.show');
     });
 })->middleware(['AdminMiddleware', 'roles' => 'ROLE_ADMIN']);
 

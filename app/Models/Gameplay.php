@@ -16,8 +16,9 @@ class Gameplay extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'image' => 'required',
-        'alt' => 'required',
+        'name',
+        'image',
+        'alt',
         'product_id'
     ];
 

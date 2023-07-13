@@ -56,34 +56,6 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <!-- Address -->
-        <div>
-            <x-input-label class="required" for="address" :value="__('Adresse')" />
-            <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autofocus autocomplete="address" />
-            <x-input-error :messages="$errors->get('address')" class="mt-2" />
-        </div>
-
-        <!-- Ville -->
-        <div>
-            <x-input-label class="required" for="town" :value="__('Ville')" />
-            <x-text-input id="town" class="block mt-1 w-full" type="text" name="town" :value="old('town')" required autofocus autocomplete="town" />
-            <x-input-error :messages="$errors->get('town')" class="mt-2" />
-        </div>
-
-        <!-- Code postale -->
-        <div>
-            <x-input-label class="required" for="department" :value="__('Code postale')" />
-            <x-text-input id="department" class="block mt-1 w-full" type="number" name="department" :value="old('department')" required autofocus autocomplete="department" />
-            <x-input-error :messages="$errors->get('department')" class="mt-2" />
-        </div>
-
-        <!-- Pays -->
-        <div>
-            <x-input-label class="required" for="country" :value="__('Pays')" />
-            <x-text-input id="country" class="block mt-1 w-full" type="text" name="country" :value="old('country')" required autofocus autocomplete="country" />
-            <x-input-error :messages="$errors->get('country')" class="mt-2" />
-        </div>
-
         <!-- Tel fixe -->
         <div>
             <x-input-label for="phone1" :value="__('Téléphone fixe (facultatif)')" />

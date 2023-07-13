@@ -36,31 +36,20 @@ class RegisteredUserController extends Controller
             'firstname' => ['bail', 'required', 'string', 'max:255'],
             'email' => ['bail', 'required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['bail', 'required', 'confirmed', Rules\Password::defaults()],
-            'address' => ['bail', 'required', 'string', 'max:255'],
-            'town' => ['bail', 'required', 'string', 'max:255'],
-            'department' => ['bail', 'required', 'integer'],
-            'country' => ['bail', 'required', 'string', 'max:255'],
             'phone1' => ['required_if:bail,string,regex:/^([0-9\s\-\+\(\)]*)$/,max:14'],
             'phone2' => ['bail', 'required', 'regex:/^([0-9\s\-\+\(\)]*)$/','string', 'min:10', 'max:14'],
         ]);
-//        dd($request->all());
+
         $user = User::create([
             'gender' => $request->gender,
             'lastname' => $request->lastname,
             'firstname' => $request->firstname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'address' => $request->address,
-            'town' => $request->town,
-            'department' => $request->department,
-            'country' => $request->country,
             'phone1' => !empty($request->phone1) ? $request->phone1 : null,
             'phone2' => $request->phone2,
-            'roles' => 'ROLE_USER',
-//            'created_at' => new \DateTime('now', new \DateTimeZone('Europe/Paris')),
-//            'updated_at' => new \DateTime('now', new \DateTimeZone('Europe/Paris')),
+            'roles' => 'ROLE_USER'
         ]);
-        dd($user);
 
         event(new Registered($user));
 
