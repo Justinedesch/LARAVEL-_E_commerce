@@ -4,11 +4,13 @@ namespace App\Providers;
 
 use App\Interfaces\AddressRepositoryInterface;
 use App\Interfaces\CategoryRepositoryInterface;
+use App\Interfaces\CommandRepositoryInterface;
 use App\Interfaces\GameplayRepositoryInterface;
 use App\Interfaces\ProductRepositoryInterface;
 use App\Interfaces\UserRepositoryInterface;
 use App\Repositories\AddressRepository;
 use App\Repositories\CategoryRepository;
+use App\Repositories\CommandRepository;
 use App\Repositories\GameplayRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\UserRepository;
@@ -26,6 +28,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(GameplayRepositoryInterface::class, GameplayRepository::class);
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(AddressRepositoryInterface::class, AddressRepository::class);
+        $this->app->bind(CommandRepositoryInterface::class, CommandRepository::class);
     }
 
     /**

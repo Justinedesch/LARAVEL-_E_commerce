@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BackOffice\OrderController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\BackOffice\GameplayController as adminGameplay;
 use App\Http\Controllers\BackOffice\CategoryController as adminCategory;
 use App\Http\Controllers\BackOffice\UserController as adminUser;
 use App\Http\Controllers\BackOffice\AddressController as adminAddress;
+use App\Http\Controllers\BackOffice\OrderController as userCommand;
 use App\Http\Controllers\CatalogueController;
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +38,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
+    Route::get('/my_orders', [userCommand::class, 'indexOfUser'])->name('orders.my_orders');
+    Route::get('/show/{id}', [userCommand::class, 'show'])->name('order.show');
 });
 
 Route::middleware(AdminMiddleware::class)->group(function () {
@@ -89,6 +92,7 @@ Route::middleware(AdminMiddleware::class)->group(function () {
         Route::post('/store', [adminAddress::class, 'store'])->name('addresses.store');
         Route::get('/show/{id}', [adminAddress::class, 'show'])->name('addresses.show');
     });
+
 })->middleware(['AdminMiddleware', 'roles' => 'ROLE_ADMIN']);
 
 require __DIR__.'/auth.php';
@@ -98,7 +102,13 @@ Route::get('/contact',[ContactController::class,"index"])->name('contact.index')
 Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue.index');
 Route::get('/category/{id}', [CategoryController::class, 'show'])->name('category.show');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
+
 Route::get('/panier',[CartController::class,"index"])->name('cart.index');
+Route::get('/addToCart/{id}',[CartController::class,"addToCart"])->name('cart.addToCart');
+Route::post('/updateCart', [CartController::class, 'update'])->name('cart.update');
+Route::get('/removeInCart/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::get('/confirm', [OrderController::class, 'store'])->name('cart.confirm');
+Route::get('/empty', [CartController::class, 'empty'])->name('cart.empty');
 
 //Route::get('/test',[TestController::class,"getAllUsers"]);
 //Route::get('/test1/{id}',[TestController::class,"getUserInfo"]);

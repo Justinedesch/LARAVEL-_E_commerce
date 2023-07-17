@@ -41,5 +41,8 @@ class Product extends Model
         return $this->hasMany(Gameplay::class);
     }
 
-
+    public function commands(): HasMany
+    {
+        return $this->hasMany(Command::class);
+    }
 }

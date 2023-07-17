@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-
+    @include('includes._backoffice._message_flash')
     @if(!empty($cats))
         @include('includes._home._caroussel_cat')
     @else
