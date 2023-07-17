@@ -7,7 +7,7 @@
 
 
 @section('content')
-    <div class=" flex justify-center gap-20 m-40">
+    <div class=" flex justify gap-20 m-40">
 
         <div>
           <h1>Categories</h1>

@@ -44,7 +44,7 @@ class OrderController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'availability' => 'required|boolean'
+            'availability' => 'required|boolean|accepted'
 
         ]);
 

@@ -3,16 +3,6 @@
 
 
 
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Commande</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('order.store') }}"> Passer commande</a>
-            </div>
-        </div>
-    </div>
 
     @if(isset($errors) && $errors->any())
 
@@ -44,6 +34,8 @@
             <th width="280px">action</th>
         </tr>
         @foreach ($products as $product)
+
+
             <tr>
 
                 <td>{{ $product->name }}</td>
@@ -53,6 +45,27 @@
 
 
             </tr>
+
+            <div class="row">
+                <div class="col-lg-12 margin-tb">
+                    <div class="pull-left">
+                        <h2>Commande</h2>
+
+
+                        <form action="{{ route('order.store') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Passer commande</button>
+                            <input type="hidden" name='number' value = '1'>
+                            <input type="hidden" name='customer_id' value = '1'>
+                            <input type="hidden" name='total' value = '1'>
+                            <input type="hidden" name='product_id' value = "{{ $product->id}}">
+                            <input type="hidden" name='availability' value = "{{ $product->available}}">
+
+                        </form>
+
+                    </div>
+
+
         @endforeach
     </table>
 
