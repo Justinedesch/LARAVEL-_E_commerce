@@ -76,11 +76,29 @@ Route::get('/addtocart', [OrderController::class, 'create'])->name('order.create
 Route::post('/addtocart', [OrderController::class, 'store'])->name('order.store');
 
 
-Route::get('/test', function () {
-$order = \App\Models\Order::find ('1');
-dd ($order);
 
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Route::get('/test', function () {
+//$order = \App\Models\Order::find(2) -> products;
+////$product = \App\Models\Product::find ('2');
+//dd($order,$product);
+
+//});
 
 
 
