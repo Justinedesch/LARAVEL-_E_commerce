@@ -19,7 +19,7 @@ class CategoryController
 
         if (!$category){
             abort(404);
-//            dd('ereur');
+
         }
 
 
