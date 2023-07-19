@@ -58,7 +58,7 @@
                         <h2 class="text-xl font-semibold m-4"> Panel utilisateur </h2>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                             <div class="h-48 max-w-full rounded-lg bg-green-500 flex justify-center items-center">
-                                <a href="{{ route('order.my_orders') }}">Mes commandes</a>
+                                <a href="{{ route('orders.my_orders') }}">Mes commandes</a>
                             </div>
                         </div>
                     </div>

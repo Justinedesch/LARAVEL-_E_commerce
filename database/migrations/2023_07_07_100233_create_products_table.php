@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('stock');
             $table->integer('discount')->nullable();
             $table->timestamps();
-            $table->foreignId('categories_id')->nullable();
+            $table->foreignId('category_id')->nullable();
         });
     }
 
