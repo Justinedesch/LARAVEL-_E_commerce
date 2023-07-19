@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 
 
-
-
-
 class CatalogueController extends Controller
 {
  function catalogue()
