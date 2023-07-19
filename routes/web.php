@@ -34,31 +34,6 @@ Route::middleware('auth')->group(function () {
 
 
 
-//Route::prefix('backoffice')->group(function () {
- //   Route::get('/monsite.com/backoffice', function () {
- //       return view('backoffice.dashboard');
- //   })->name('backoffice.dashboard');
-//});
-    //Route::get('/catalogue', function () {
-    //    return view('backoffice.catalogue');
-   // })->name('backoffice.catlogue');
-
-   // Route::get('/customers', function () {
-  //      return view('backoffice.products');
-  //  })->name('backoffice.products');
-
-   // Route::get('/orders', function () {
-    //    return view('backoffice.orders');
-  //  })->name('backoffice.orders');
-
- //   Route::get('/categories', function () {
-    //    return view('backoffice.categories');
-  //  })->name('backoffice.categories');
-
-    
-//});
-
-
 
 
 
