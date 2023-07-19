@@ -9,31 +9,6 @@ use App\Models\Product;
 
 
 
-//class CatalogueController extends Controller
-//{
-   // function catalogue() {
-     // $products = DB::select("select * from products");
-       
-      //  return view('catalogue', ['products' => $products]);
-
-      //return view('catalogue', ['catalogue' => $products]);
-   //   }
-//}
-
-
-
-
-//class CatalogueController extends Controller
-//{
-  //  function catalogue() {
-
-//      $products = Product::orderBy('name')->get();
-
-//      return view('catalogue', compact('products'));
-    
-  //   }
-//}
-
 
 
 class CatalogueController extends Controller
