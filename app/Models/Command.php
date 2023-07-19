@@ -20,7 +20,8 @@ class Command extends Model
         'identifiant',
         'user_id' ,
         'product_id',
-        'total'
+        'totalQ',
+        'totalO'
     ];
 
     public function products(): HasMany

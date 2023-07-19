@@ -16,15 +16,27 @@ use Illuminate\Foundation\Application;
 class OrderController extends Controller
 {
 
-    public function indexOfAdmin()
+    public function indexOfAdmin(CommandRepositoryInterface $commandRepository): View|Application|Factory
     {
+        $ordersList = $commandRepository->getAllCommands();
+        return view('backoffice/orders/admin/orders_users', compact('ordersList'));
+    }
 
+    public function showOfAdmin(Request $request, CommandRepositoryInterface $commandRepository, UserRepositoryInterface $userRepository, ProductRepositoryInterface $productRepository): View|Application|Factory
+    {
+        $orderId = $request->route('id');
+        $order = $commandRepository->getCommandtById($orderId);
+        $user = $userRepository->getUsertById($order->user_id);
+        $addressByUser = $userRepository->getAddressByUser($user->id);
+        $product = $productRepository->getProductById($order->product_id);
+
+        return view('backoffice/orders/admin/order_show', compact('order', 'user','addressByUser','product'));
     }
 
     /**
      * Display a listing of the resource.
      */
-    public function indexOfUser(Request $request, CommandRepositoryInterface $commandRepository, ProductRepositoryInterface $productRepository): View|Application|Factory
+    public function indexOfUser(Request $request, CommandRepositoryInterface $commandRepository): View|Application|Factory
     {
         $user = $request->user();
         $ordersList = $commandRepository->getCommandtByUserId($user->id);
@@ -37,20 +49,25 @@ class OrderController extends Controller
     public function store(Request $request, ProductRepositoryInterface $productRepository, CommandRepositoryInterface $commandRepository): RedirectResponse
     {
         $cart = session()->get('cart');
-        dd($cart);
         $user = $request->user();
-
         $dateNow = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
         $numOrder = $dateNow->format('dmY_His').'__'.$user->id.'__'.count($cart).'__'.rand(1111111111,9999999999);
 
         foreach ($cart as $item)
         {
             $product = $productRepository->getProductById($item['id']);
+            $newStock = $product->stock - $request->quantity;
+
             $commandRepository->createCommand([
                 "identifiant" => $numOrder,
                 "user_id" => $user->id,
                 "product_id" => $product->id,
+                "totalQ" => $request->totalQ,
+                "totalO" => $request->totalC
+            ]);
 
+            $productRepository->updateProduct($product->id, [
+                'stock' => $newStock
             ]);
 
         }
@@ -62,8 +79,8 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-        public function show(Request $request, CommandRepositoryInterface $commandRepository, UserRepositoryInterface $userRepository, ProductRepositoryInterface $productRepository)
-    {
+        public function show(Request $request, CommandRepositoryInterface $commandRepository, UserRepositoryInterface $userRepository, ProductRepositoryInterface $productRepository): View|Application|Factory
+        {
         $orderId = $request->route('id');
         $order = $commandRepository->getCommandtById($orderId);
         $user = $userRepository->getUsertById($order->user_id);
@@ -71,13 +88,5 @@ class OrderController extends Controller
         $product = $productRepository->getProductById($order->product_id);
 
         return view('backoffice/orders/order_show', compact('order', 'user','addressByUser','product'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Command $command)
-    {
-        //
     }
 }

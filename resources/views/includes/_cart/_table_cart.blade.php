@@ -23,11 +23,11 @@
         </tr>
         </thead>
         <tbody>
-        @php $totalP = 0 @endphp
+        @php $totalC = 0 @endphp
         @php $totalQ = 0 @endphp
 
         @foreach(session('cart') as $id => $details)
-            @php $totalP += $details['price'] * $details['quantity'] @endphp
+            @php $totalC += $details['price'] * $details['quantity'] @endphp
             @php $totalQ += $details['quantity'] @endphp
             <tr class="bg-white dark:bg-gray-800">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -38,9 +38,7 @@
                         @csrf
                         <input type="number" name="quantity" value="{{ $details['quantity'] }}" />
                         <input type="hidden" name="id" value="{{ $details['id'] }}" />
-                        <input type="hidden" name="">
                     </form>
-
                 </td>
                 <td class="px-6 py-4">
                     {{ $details['price'] }} € /U
@@ -63,7 +61,7 @@
             <th scope="row" class="px-6 py-3 text-base">Total</th>
             <td class="px-6 py-3">{{ $totalQ }}</td>
             <td></td>
-            <td class="px-6 py-3">{{ $totalP }} €</td>
+            <td class="px-6 py-3">{{ $totalC }} €</td>
         </tr>
         </tfoot>
     </table>

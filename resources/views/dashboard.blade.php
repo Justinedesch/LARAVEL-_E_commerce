@@ -37,6 +37,9 @@
                             <div class="h-48 max-w-full rounded-lg bg-green-500 flex justify-center items-center">
                                 <a href="{{ route('addresses.index') }}">Gestion des adresses</a>
                             </div>
+                            <div class="h-48 max-w-full rounded-lg bg-green-500 flex justify-center items-center">
+                                <a href="{{ route('commands.index') }}">Voir les commandes</a>
+                            </div>
                         </div>
                     </div>
 

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('identifiant');
             $table->foreignId('user_id');
             $table->foreignId('product_id');
-            $table->foreignId('carrier_id');
-            $table->integer('total');
+            $table->integer('totalQ');
+            $table->float('totalO')->nullable();
             $table->timestamps();
         });
     }

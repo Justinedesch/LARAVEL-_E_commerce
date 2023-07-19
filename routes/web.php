@@ -93,6 +93,11 @@ Route::middleware(AdminMiddleware::class)->group(function () {
         Route::get('/show/{id}', [adminAddress::class, 'show'])->name('addresses.show');
     });
 
+    Route::group(['prefix' => 'admin/commands'], function(){
+        Route::get('/', [userCommand::class, 'indexOfAdmin'])->name('commands.index');
+        Route::get('/show/{id}', [userCommand::class, 'showOfAdmin'])->name('commands.show');
+    });
+
 })->middleware(['AdminMiddleware', 'roles' => 'ROLE_ADMIN']);
 
 require __DIR__.'/auth.php';
@@ -107,7 +112,7 @@ Route::get('/panier',[CartController::class,"index"])->name('cart.index');
 Route::get('/addToCart/{id}',[CartController::class,"addToCart"])->name('cart.addToCart');
 Route::post('/updateCart', [CartController::class, 'update'])->name('cart.update');
 Route::get('/removeInCart/{id}', [CartController::class, 'remove'])->name('cart.remove');
-Route::get('/confirm', [OrderController::class, 'store'])->name('cart.confirm');
+Route::post('/confirm', [OrderController::class, 'store'])->name('cart.confirm');
 Route::get('/empty', [CartController::class, 'empty'])->name('cart.empty');
 
 //Route::get('/test',[TestController::class,"getAllUsers"]);
