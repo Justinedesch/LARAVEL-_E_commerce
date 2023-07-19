@@ -17,11 +17,12 @@ return new class extends Migration
             $table->id('id');
             $table->integer('number');
             $table->integer('total');
-            $table->dateTime('date');
+
             $table->foreignId('customer_id');
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->foreignId('product_id');
             $table->foreign('product_id')->references('id')->on('products');
+            $table->timestamps();
         });
     }
 
