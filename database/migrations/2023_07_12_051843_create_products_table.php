@@ -22,8 +22,10 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->smallInteger('quantity')->nullable();
             $table->boolean('available')->nullable();
-            $table->integer('categorie_id')->nullable()->index('id_categories');
+            $table->foreignId('categorie_id');
             $table->timestamps();
+            $table->foreign('categorie_id')->references(['id'])->on('categories');
+
         });
     }
 
