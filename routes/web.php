@@ -6,10 +6,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CatalogueController;
-use App\Http\Controllers\BackofficeController;
-use App\Models\Backoffice;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\RelationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

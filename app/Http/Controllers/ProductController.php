@@ -6,28 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 
 
-//class ProductController extends Controller
-//{
-
-//    public function productdetail ($id) {
-
-//        $product = DB::selectOne("select * from products where id = $id");
-       // dd($product);
-
-//       if (! $product) {
-    //    abort(404);
-  //     }
-      //  return view('productdetail ',
-
-//        ['product' => $product,
-  //      'id' => $id,
-
-//    ]);
-
-//      }
-  //  }
-
-
 
 
 class ProductController extends Controller
