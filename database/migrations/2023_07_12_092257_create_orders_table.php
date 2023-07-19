@@ -18,7 +18,10 @@ return new class extends Migration
             $table->integer('number');
             $table->integer('total');
             $table->dateTime('date');
-            $table->integer('customer_id')->index('customers_id');
+            $table->foreignId('customer_id');
+            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreignId('order_id');
+            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 
