@@ -20,8 +20,8 @@ return new class extends Migration
             $table->dateTime('date');
             $table->foreignId('customer_id');
             $table->foreign('customer_id')->references('id')->on('customers');
-            $table->foreignId('order_id');
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreignId('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
